@@ -5,6 +5,7 @@ import com.ibm.academia.clasesabstractas.formularios.InputForm;
 import com.ibm.academia.clasesabstractas.formularios.SelectForm;
 import com.ibm.academia.clasesabstractas.formularios.TextAreaForm;
 import com.ibm.academia.clasesabstractas.formularios.seleccion.Opcion;
+import com.ibm.academia.clasesabstractas.validador.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,9 +14,20 @@ public class MainForm {
     public static void main(String[] args) {
 
         InputForm nombreUsuario = new InputForm("Nombre usuario");
+        nombreUsuario.addValidador(new RequeridoValidador());
+        nombreUsuario.addValidador(new NoNuloValidador());
+        nombreUsuario.addValidador( new LargoValidador(4,10)); //minimo y maximo de caracteres necesarios
+
+
         InputForm contrasena = new InputForm("Contrasena", "password");
+        contrasena.addValidador(new RequeridoValidador());
+        contrasena.addValidador(new LargoValidador(4,9));
         InputForm correoElectronico = new InputForm("Correo Electrónico","email");
+        correoElectronico.addValidador( new RequeridoValidador());
+        correoElectronico.addValidador(new EmailValidador());
         InputForm edad = new InputForm("Edad", "number");
+        //NumeroValidador nv = new NumeroValidador(); es lo mismo crearlo asi que como esta abajo (como hice todos los demas)
+        edad.addValidador(new NumeroValidador());
 
         TextAreaForm experiencia = new TextAreaForm("Experiencia",5,9);
 
@@ -42,7 +54,14 @@ public class MainForm {
 
         elementos.forEach(e -> {
             System.out.println(e.dibujarHtml());
+            System.out.println("<br>");
         });
+
+        elementos.forEach(e ->{
+            e.getErrores().forEach(System.out::println);
+        } );
+
+
 
 
 
@@ -51,3 +70,7 @@ public class MainForm {
 
     }
 }
+
+
+/*Linea 19 lo que esta haciendo es crear las validaciones que se generaron para que para cuando se vayan ingresando los datos se
+* pueda dar esa validacion*/
