@@ -2,15 +2,17 @@ package com.ibm.academia.interfaces.imprenta;
 
 import com.ibm.academia.interfaces.imprenta.modelos.*;
 
+import static com.ibm.academia.interfaces.imprenta.modelos.Imprimible.imprimir;
+
 import java.util.Arrays;
 
 public class MainImprenta {
     public static void main(String[] args) {
 
-        Curriculo cv = new Curriculo("Erick Martinez","Ingeniero en computacion", "Resumen laboral....");
+        Curriculo cv = new Curriculo( new Persona("Erick","Martinez"),"Ingeniero en computacion", "Resumen laboral....");
         cv.setExperiencias(Arrays.asList("Java", "Oracle DBA", "Spring Framework", "Desarrollo Fullstack", "Angular"));
 
-        Libro libro = new Libro("Erich Gamma", "Patrones de Diseño", Genero.PROGRAMACION);
+        Libro libro = new Libro(new Persona("Erich","Gamma"), "Patrones de Diseño", Genero.PROGRAMACION);
         Pagina singleton = new Pagina("Patron Singleton");
         Pagina observador = new Pagina("Patron observador");
         Pagina factory = new Pagina("Patron factory");
@@ -20,7 +22,7 @@ public class MainImprenta {
         libro.setPaginas(Arrays.asList(singleton,observador, factory,composite, facade));
 
 
-        Informe informe = new Informe("Estudio sobre Microservicios", "Martin Fowler", "James");
+        Informe informe = new Informe( new Persona("Martin", "Fowler"), new Persona("James", "Gosling"), "Microservicios");
 
         imprimir(cv);
         imprimir(informe);
@@ -28,9 +30,7 @@ public class MainImprenta {
 
     }
 
-    public static void imprimir(Imprimible imprimible){
-        System.out.println(imprimible.imprimir());
-    }
+
 }
 
 /*El metodo imprimir hace referencia al que esta declarado dentro de la clase abstracta pero a su vez tambien a las demas clases donde se implemento
@@ -46,3 +46,5 @@ public class MainImprenta {
 
 /*Dentro del metodo imprimir paso como parametro el nombre de mi iterfaz para poderla implementar por lo cual debo
 * de llamar en cada clase a mi interfaz para poder hacer uso de ella y el metodo Imprimible*/
+
+/*Al importar a la Interfaz denntro del main junto con el metodo ya no tengo que hacer referencia al metodo sino a imprimir*/

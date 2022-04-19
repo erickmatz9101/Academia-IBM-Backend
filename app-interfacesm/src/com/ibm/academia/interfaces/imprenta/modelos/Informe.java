@@ -2,11 +2,11 @@ package com.ibm.academia.interfaces.imprenta.modelos;
 
 public class Informe extends Hoja implements Imprimible
 {
-    private String autor;
-    private String revisor;
+    private Persona autor;
+    private Persona revisor;
 
 
-    public Informe( String autor, String revisor, String contenido) {
+    public Informe( Persona autor, Persona revisor, String contenido) {
         super(contenido);
         this.autor = autor;
         this.revisor = revisor;

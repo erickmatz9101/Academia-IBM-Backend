@@ -1,6 +1,6 @@
 package com.ibm.academia.interfaces.imprenta.modelos;
 
-public class Pagina extends Hoja
+public class Pagina extends Hoja implements Imprimible
 {
     public Pagina(String contenido) {
         super(contenido);
@@ -8,6 +8,6 @@ public class Pagina extends Hoja
 
     @Override
     public String imprimir() {
-                return null;
+                return this.contenido;
     }
 }

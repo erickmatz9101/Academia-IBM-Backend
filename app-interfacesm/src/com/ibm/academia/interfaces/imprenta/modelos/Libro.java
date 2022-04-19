@@ -5,23 +5,23 @@ import java.util.List;
 
 public class Libro implements Imprimible
 {
-    private List<Hoja>paginas;
-    private String autor;
+    private List<Imprimible>paginas;
+    private Persona autor;
     private String titulo;
     private Genero genero; //(Genero hace referencia al ENUM)
 
-    public Libro(String autor, String titulo, Genero genero) {
+    public Libro(Persona autor, String titulo, Genero genero) {
         this.autor = autor;
         this.titulo = titulo;
         this.genero = genero;
         this.paginas= new ArrayList<>();
     }
 
-    public List<Hoja> getPaginas() {
+    public List<Imprimible> getPaginas() {
         return paginas;
     }
 
-    public void setPaginas(List<Hoja> paginas) {
+    public void setPaginas(List<Imprimible> paginas) {
         this.paginas = paginas;
     }
 
