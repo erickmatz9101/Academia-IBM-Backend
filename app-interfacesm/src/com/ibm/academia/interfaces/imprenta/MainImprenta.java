@@ -28,6 +28,8 @@ public class MainImprenta {
         imprimir(informe);
         imprimir(libro);
 
+        System.out.println(Imprimible.TEXT_DEFECTO);
+
     }
 
 
