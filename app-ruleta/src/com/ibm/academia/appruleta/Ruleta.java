@@ -7,6 +7,7 @@ public class Ruleta implements Serializable
 {
      private Integer id;
      private String color;
+     Colores col;
      private Integer numero;
      private boolean ruletaAbierta;
      private double valorApertura;
@@ -63,6 +64,14 @@ public class Ruleta implements Serializable
           this.opcion = opcion;
      }
 
+     public Colores getCol() {
+          return col;
+     }
+
+     public void setCol(Colores col) {
+          this.col = col;
+     }
+
      public Integer crearRuleta(){
 
           id= (int) (Math.random()*100+1);
@@ -98,13 +107,17 @@ public class Ruleta implements Serializable
                          System.out.println("En esta opcion deberas elegir un color el cual unicamente podra ser negro o rojo:\n");
                          Scanner eleccionColor = new Scanner(System.in);
                          this.color =eleccionColor.nextLine();
+                         if (col.compareTo(Colores.ROJO)<0 && col.compareTo(Colores.NEGRO)<1){
+
+                              System.out.println("Elegiste el color: "+col);
+
+                         }
                          System.out.println("Ahora coloca la cantidad que deseas apostar la cual debera ser maximo de 10,000 dolares: ");
+
 
                          break;
 
                }
-
-
 
           }else{
                System.out.println("Inicia el juego de nuevo para poder obtener una ruleta abierta y poder ingresar la apuesta");
