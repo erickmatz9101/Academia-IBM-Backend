@@ -8,8 +8,8 @@ public class MainRuleta {
         ruleta.crearRuleta();
         System.out.println("El id de la ruleta es: "+ruleta.getId());
         ruleta.aperturaRuleta(ruleta.getId());
-
         ruleta.apostarRuleta();
+
 
 
 

@@ -1,17 +1,20 @@
 package com.ibm.academia.appruleta;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Ruleta implements Serializable
 {
      private Integer id;
      private String color;
-     Colores col;
      private Integer numero;
      private boolean ruletaAbierta;
      private double valorApertura;
      private int opcion;
+     List <String> colores = Arrays.asList("negro","rojo");
 
      public Ruleta() {
      }
@@ -64,14 +67,6 @@ public class Ruleta implements Serializable
           this.opcion = opcion;
      }
 
-     public Colores getCol() {
-          return col;
-     }
-
-     public void setCol(Colores col) {
-          this.col = col;
-     }
-
      public Integer crearRuleta(){
 
           id= (int) (Math.random()*100+1);
@@ -106,12 +101,16 @@ public class Ruleta implements Serializable
                     case 1:
                          System.out.println("En esta opcion deberas elegir un color el cual unicamente podra ser negro o rojo:\n");
                          Scanner eleccionColor = new Scanner(System.in);
-                         this.color =eleccionColor.nextLine();
-                         if (col.compareTo(Colores.ROJO)<0 && col.compareTo(Colores.NEGRO)<1){
+                         color =eleccionColor.nextLine();
 
-                              System.out.println("Elegiste el color: "+col);
-
+                         if (colores.contains(color)){
+                              System.out.println("El color que ingresate es: "+color);
+                         }else{
+                              System.out.println("Color no valido");
                          }
+
+
+
                          System.out.println("Ahora coloca la cantidad que deseas apostar la cual debera ser maximo de 10,000 dolares: ");
 
 
