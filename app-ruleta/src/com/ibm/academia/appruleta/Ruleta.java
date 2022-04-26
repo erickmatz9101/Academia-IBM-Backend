@@ -2,6 +2,7 @@ package com.ibm.academia.appruleta;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ruleta implements Serializable
@@ -12,6 +13,8 @@ public class Ruleta implements Serializable
      private boolean ruletaAbierta;
      private double valorApertura;
      private int opcion;
+     private String colorRuleta;
+     private Integer numeroRuleta;
      List<String> colores=Arrays.asList("negro", "rojo");
      List <Integer> numeros= Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
 
@@ -66,6 +69,22 @@ public class Ruleta implements Serializable
           this.opcion = opcion;
      }
 
+     public String getColorRuleta() {
+          return colorRuleta;
+     }
+
+     public void setColorRuleta(String colorRuleta) {
+          this.colorRuleta = colorRuleta;
+     }
+
+     public Integer getNumeroRuleta() {
+          return numeroRuleta;
+     }
+
+     public void setNumeroRuleta(Integer numeroRuleta) {
+          this.numeroRuleta = numeroRuleta;
+     }
+
      public Integer crearRuleta(){
 
           id= (int) (Math.random()*100+1);
@@ -103,10 +122,20 @@ public class Ruleta implements Serializable
                          color =eleccionColor.nextLine();
                          if (colores.contains(color)){
                               System.out.println("El color que ingresaste es: "+color);
+
+                              System.out.println("Ahora toca el turno de la eleccion de la ruleta: ");
+                              Random colorAleatorio= new Random();
+                              colorRuleta=colores.get(colorAleatorio.nextInt(colores.size()));
+                              System.out.println("El color de la ruleta es:  " + colorRuleta);
+
+                              if (color.equals(colorRuleta)){
+                                   System.out.println("Los colores son iguales:  ");
+                              }
                          }else{
                               System.out.println("El color ingresado no es valido, intentalo de nuevo");
                          }
                          break;
+
                     case 2:
                          System.out.println("Elegiste la opcion 2: En esta opcion puedes apostar por un numero que esté entre el 1 y el 36 ");
                          Scanner entradaNumero = new Scanner(System.in);
@@ -121,7 +150,7 @@ public class Ruleta implements Serializable
                     case 3:
                          System.out.println("Elegiste la opcion 3: En esta opcion puedes apostar por un color y un numero. Ingresa el color que debera ser negro o rojo y un numero que este entre el 1 y el 36\n");
                          Scanner eleccionColor2 = new Scanner(System.in);
-                         color =eleccionColor2.nextLine();
+                         color =eleccionColor2.nextLine()   ;
                          if (colores.contains(color)){
                               System.out.println("El color que ingresaste es: "+color);
                          }else{
@@ -133,6 +162,7 @@ public class Ruleta implements Serializable
                          numero=entradaNumero2.nextInt();
                          if (numeros.contains(numero)){
                               System.out.println("El numero que elegiste es el : "+numero);
+
                          }else{
                               System.out.println("El numero ingresado no es valido intentalo de nuevo");
                          }
