@@ -129,7 +129,7 @@ public class Ruleta implements Serializable
                               if (valorApertura <=0 || valorApertura>10000){
                                    System.out.println("La cantidad ingresada no es valida, intentalo mas tarde");
                               }else{
-                                   System.out.println("Aqui inicia el juego, ahora toca el tuno de eleccion de la ruleta");
+                                   System.out.println("Aqui inicia el juego, ahora toca el turno de eleccion de la ruleta");
                                    Random colorAleatorio= new Random();
                                    colorRuleta=colores.get(colorAleatorio.nextInt(colores.size()));
                                    System.out.println("El color de la ruleta es:  " + colorRuleta);
@@ -157,7 +157,7 @@ public class Ruleta implements Serializable
                               if (valorApertura <=0 || valorApertura>10000){
                                    System.out.println("La cantidad ingresada no es valida, intentalo mas tarde");
                               }else{
-                                   System.out.println("Aqui inicia el juego, ahora toca el tuno de eleccion de la ruleta");
+                                   System.out.println("Aqui inicia el juego, ahora toca el turno de eleccion de la ruleta");
                                    Random numeroAleatorio= new Random();
                                    numeroRuleta=numeros.get(numeroAleatorio.nextInt(numeros.size()));
                                    System.out.println("El numero de la ruleta es:  " + numeroRuleta);
@@ -195,6 +195,23 @@ public class Ruleta implements Serializable
                          }else{
                               System.out.println("El numero ingresado no es valido intentalo de nuevo");
                          }
+                         System.out.println("Aqui inicia el juego ahora toca el turno de la ruleta");
+                         Random colorAleatorio= new Random();
+                         colorRuleta=colores.get(colorAleatorio.nextInt(colores.size()));
+                         System.out.println("El color de la ruleta es:  " + colorRuleta);
+
+                         Random numeroAleatorio= new Random();
+                         numeroRuleta=numeros.get(numeroAleatorio.nextInt(numeros.size()));
+                         System.out.println("El numero de la ruleta es:  " + numeroRuleta);
+
+                         if (color.equals(colorRuleta)&& numero==numeroRuleta){
+                              cantidadGanada=valorApertura*1;
+                              System.out.println("Felicidades, ganaste la cantidad de $: "+cantidadGanada);
+                         }else{
+                              System.out.println("En esta ocasion no ganaste, intentalo de nuevo");
+                         }
+
+
                          break;
 
                     default:
