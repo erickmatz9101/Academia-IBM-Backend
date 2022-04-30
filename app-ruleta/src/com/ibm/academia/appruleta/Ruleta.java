@@ -120,21 +120,17 @@ public class Ruleta implements Serializable
 
                     case 1:
                          System.out.println("Elegiste la opcion 1: En  esta opcion deberas ingresar un color solo hay 2 opciones, negro y rojo. Ingresa el color:\n");
-
-                         Scanner eleccionColor = new Scanner(System.in);
-                         color =eleccionColor.nextLine();
+                         //Entrada Color
+                        entradaColor();
                          if (colores.contains(color)){
                               System.out.println("El color seleccionado es: "+color);
-                              System.out.println("Ahora ingresa la cantidad que deseas apostar, recuerda que no puede ser mayor a $10,000");
-                              Scanner apuesta = new Scanner(System.in);
-                              valorApertura=apuesta.nextDouble();
+                              //Entrada apuesta
+                              entradaApuesta();
                               if (valorApertura <=0 || valorApertura>10000){
                                    System.out.println("La cantidad ingresada no es valida, intentalo mas tarde");
                               }else{
-                                   System.out.println("Aqui inicia el juego, ahora toca el turno de eleccion de la ruleta");
-                                   Random colorAleatorio= new Random();
-                                   colorRuleta=colores.get(colorAleatorio.nextInt(colores.size()));
-                                   System.out.println("El color de la ruleta es:  " + colorRuleta);
+                                   //Eleccion color Ruleta Color
+                                   eleccionRuletaColor();
                                    if (color.equals(colorRuleta)){
                                         cantidadGanada=valorApertura*1;
                                         System.out.println("Felicidades, ganaste la cantidad de $: "+cantidadGanada);
@@ -152,20 +148,19 @@ public class Ruleta implements Serializable
 
                     case 2:
                          System.out.println("Elegiste la opcion 2: En esta opcion puedes apostar por un numero que esté entre el 1 y el 36 ");
-                         Scanner entradaNumero = new Scanner(System.in);
-                         numero=entradaNumero.nextInt();
+                         //Entrada Numero
+                         entradaNumero();
                          if (numeros.contains(numero)){
                               System.out.println("El numero que elegiste es el : "+numero);
                               System.out.println("Ahora ingresa la cantidad que deseas apostar, recuerda que no puede ser mayor a $10,000");
-                              Scanner apuesta2 = new Scanner(System.in);
-                              valorApertura=apuesta2.nextDouble();
+                              //Entrada Apuesta
+                              entradaApuesta();
                               if (valorApertura <=0 || valorApertura>10000){
                                    System.out.println("La cantidad ingresada no es valida, intentalo mas tarde");
                               }else{
                                    System.out.println("Aqui inicia el juego, ahora toca el turno de eleccion de la ruleta");
-                                   Random numeroAleatorio= new Random();
-                                   numeroRuleta=numeros.get(numeroAleatorio.nextInt(numeros.size()));
-                                   System.out.println("El numero de la ruleta es:  " + numeroRuleta);
+                                   //Eleccion numero Ruleta
+                                   eleccionRuletaNumero();
                                    if (numero==numeroRuleta){
                                         cantidadGanada=valorApertura*1;
                                         System.out.println("Felicidades, ganaste la cantidad de $: "+cantidadGanada);
@@ -179,12 +174,10 @@ public class Ruleta implements Serializable
                          }
                          break;
 
-
-
                     case 3:
                          System.out.println("Elegiste la opcion 3: En esta opcion puedes apostar por un color y un numero. Ingresa el color que debera ser negro o rojo y un numero que este entre el 1 y el 36\n");
-                         Scanner eleccionColor2 = new Scanner(System.in);
-                         color =eleccionColor2.nextLine()   ;
+                         //Eleccion Color
+                         entradaColor();
                          if (colores.contains(color)){
                               System.out.println("El color que ingresaste es: "+color);
                          }else{
@@ -192,8 +185,8 @@ public class Ruleta implements Serializable
                          }
 
                          System.out.println("Ahora tienes que elegir un numero que se encuentre entre el 1 y el 36 ");
-                         Scanner entradaNumero2 = new Scanner(System.in);
-                         numero=entradaNumero2.nextInt();
+                         //Entrada Numero
+                         entradaNumero();
                          if (numeros.contains(numero)){
                               System.out.println("El numero que elegiste es el : "+numero);
 
@@ -201,13 +194,10 @@ public class Ruleta implements Serializable
                               System.out.println("El numero ingresado no es valido intentalo de nuevo");
                          }
                          System.out.println("Aqui inicia el juego ahora toca el turno de la ruleta");
-                         Random colorAleatorio= new Random();
-                         colorRuleta=colores.get(colorAleatorio.nextInt(colores.size()));
-                         System.out.println("El color de la ruleta es:  " + colorRuleta);
-
-                         Random numeroAleatorio= new Random();
-                         numeroRuleta=numeros.get(numeroAleatorio.nextInt(numeros.size()));
-                         System.out.println("El numero de la ruleta es:  " + numeroRuleta);
+                         //Eleccion Ruleta Color
+                         eleccionRuletaColor();
+                         //Elecion Ruleta Numero
+                         eleccionRuletaNumero();
 
                          if (color.equals(colorRuleta)&& numero==numeroRuleta){
                               cantidadGanada=valorApertura*1;
@@ -229,6 +219,41 @@ public class Ruleta implements Serializable
           }
 
      }
+
+     public void entradaColor(){
+          Scanner eleccionColor = new Scanner(System.in);
+          color =eleccionColor.nextLine().toLowerCase();
+     }
+
+     public void entradaNumero(){
+          Scanner entradaNumero = new Scanner(System.in);
+          numero=entradaNumero.nextInt();
+
+     }
+
+     public void entradaApuesta(){
+          System.out.println("Ahora ingresa la cantidad que deseas apostar, recuerda que no puede ser mayor a $10,000");
+          Scanner apuesta = new Scanner(System.in);
+          valorApertura=apuesta.nextDouble();
+     }
+
+     public void eleccionRuletaColor(){
+          System.out.println("Aqui inicia el juego, ahora toca el turno de eleccion de color a la ruleta");
+          Random colorAleatorio= new Random();
+          colorRuleta=colores.get(colorAleatorio.nextInt(colores.size()));
+          System.out.println("El color de la ruleta es:  " + colorRuleta);
+     }
+
+     public void eleccionRuletaNumero(){
+          Random numeroAleatorio= new Random();
+          numeroRuleta=numeros.get(numeroAleatorio.nextInt(numeros.size()));
+          System.out.println("El numero de la ruleta es:  " + numeroRuleta);
+
+     }
+
+
+
+
 
 
 
