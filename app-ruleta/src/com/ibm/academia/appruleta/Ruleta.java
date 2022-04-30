@@ -92,12 +92,13 @@ public class Ruleta implements Serializable
           return id;
      }
 
-     public boolean aperturaRuleta(Integer numeroAletorio){
-          if (id >=1 && id>=18){
+     public boolean aperturaRuleta(Integer id){
+          if (id >=50 && id<=100){
                System.out.println("Ruleta abierta");
+
                return true;
           }else{
-               System.out.println("Ruleta cerrada");
+               //System.out.println("Ruleta cerrada");
                return false;
           }
      }
@@ -119,6 +120,7 @@ public class Ruleta implements Serializable
 
                     case 1:
                          System.out.println("Elegiste la opcion 1: En  esta opcion deberas ingresar un color solo hay 2 opciones, negro y rojo. Ingresa el color:\n");
+
                          Scanner eleccionColor = new Scanner(System.in);
                          color =eleccionColor.nextLine();
                          if (colores.contains(color)){
@@ -136,7 +138,10 @@ public class Ruleta implements Serializable
                                    if (color.equals(colorRuleta)){
                                         cantidadGanada=valorApertura*1;
                                         System.out.println("Felicidades, ganaste la cantidad de $: "+cantidadGanada);
-                              }
+                              }else{
+                                        System.out.println("En esta ocasion no ganaste");
+
+                                   }
 
                               }
                          }else{
